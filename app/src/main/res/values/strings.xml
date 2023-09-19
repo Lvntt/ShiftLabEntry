@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ShiftLabEntry</string>
+    <string name="first_name_placeholder">First name</string>
+    <string name="second_name_placeholder">Second name</string>
+    <string name="date_of_birth_placeholder">Date of birth</string>
+    <string name="password_placeholder">Password</string>
+    <string name="repeat_password_placeholder">Repeat password</string>
 </resources>

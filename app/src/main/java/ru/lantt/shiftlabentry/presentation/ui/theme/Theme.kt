@@ -1,4 +1,4 @@
-package ru.lantt.shiftlabentry.ui.theme
+package ru.lantt.shiftlabentry.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
