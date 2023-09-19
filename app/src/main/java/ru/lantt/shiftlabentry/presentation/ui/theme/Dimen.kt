@@ -6,5 +6,7 @@ const val RoundedCornerShapePercentMedium = 15
 
 val PaddingMedium = 16.dp
 val PaddingLarge = 32.dp
+val PaddingExtraLarge = 64.dp
 
 val TextFieldIconSize = 28.dp
+val ButtonMinHeight = 50.dp

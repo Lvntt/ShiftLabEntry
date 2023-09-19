@@ -5,4 +5,7 @@
     <string name="date_of_birth_placeholder">Date of birth</string>
     <string name="password_placeholder">Password</string>
     <string name="repeat_password_placeholder">Repeat password</string>
+    <string name="greetings_title">Get Started</string>
+    <string name="greeting_subtitle">by creating a free account.</string>
+    <string name="register">Register</string>
 </resources>
