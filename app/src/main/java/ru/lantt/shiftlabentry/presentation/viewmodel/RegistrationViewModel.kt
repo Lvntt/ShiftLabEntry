@@ -3,7 +3,10 @@ package ru.lantt.shiftlabentry.presentation.viewmodel
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import ru.lantt.shiftlabentry.common.Constants
 import ru.lantt.shiftlabentry.domain.entity.ErrorType
+import ru.lantt.shiftlabentry.domain.entity.User
+import ru.lantt.shiftlabentry.domain.usecase.SaveUserUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidateDateOfBirthUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidateFirstNameUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidatePasswordUseCase
@@ -18,7 +21,8 @@ class RegistrationViewModel(
     private val validateSecondNameUseCase: ValidateSecondNameUseCase,
     private val validateDateOfBirthUseCase: ValidateDateOfBirthUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase,
-    private val validateRepeatedPasswordUseCase: ValidateRepeatedPasswordUseCase
+    private val validateRepeatedPasswordUseCase: ValidateRepeatedPasswordUseCase,
+    private val saveUserUseCase: SaveUserUseCase
 ) : ViewModel() {
 
     val registrationUiState: State<RegistrationUiState>
@@ -120,6 +124,19 @@ class RegistrationViewModel(
                 && registrationState.dateOfBirthErrorId == null
                 && registrationState.passwordErrorId == null
                 && registrationState.repeatedPasswordErrorId == null
+    }
+
+    fun onRegister() {
+        val registrationState = _registrationUiState.value
+
+        saveUserUseCase(
+            User(
+                firstName = registrationState.firstName,
+                secondName = registrationState.secondName,
+                dateOfBirthMillis = registrationState.dateOfBirth ?: Constants.DATE_OF_BIRTH_ERROR_CODE,
+                password = registrationState.password
+            )
+        )
     }
 
 }

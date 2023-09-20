@@ -11,3 +11,5 @@ val PaddingExtraLarge = 64.dp
 
 val TextFieldIconSize = 28.dp
 val ButtonMinHeight = 50.dp
+val SmallElevation = 8.dp
+val ImageRegularSize = 64.dp

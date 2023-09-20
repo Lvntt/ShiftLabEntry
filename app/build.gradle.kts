@@ -54,10 +54,12 @@ dependencies {
     val securityCryptoVersion = "1.1.0-alpha06"
     val koinVersion = "3.3.2"
     val koinComposeVersion = "3.4.1"
+    val navVersion = "2.5.3"
 
     val securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
     val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
     val koinAndroidCompose = "io.insert-koin:koin-androidx-compose:$koinComposeVersion"
+    val navigation = "androidx.navigation:navigation-compose:$navVersion"
 
     implementation("androidx.compose.material3:material3:1.1.1")
     implementation("androidx.core:core-ktx:1.9.0")
@@ -72,6 +74,7 @@ dependencies {
     implementation(securityCrypto)
     implementation(koinAndroid)
     implementation(koinAndroidCompose)
+    implementation(navigation)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

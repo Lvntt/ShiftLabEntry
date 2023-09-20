@@ -19,4 +19,8 @@
     <string name="passwords_mismatch_error">Passwords do not match</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="hello">Hello!</string>
+    <string name="greeting">Hey,</string>
+    <string name="hiThere">Hi there!</string>
+    <string name="noUser">There is no user yet :(</string>
 </resources>

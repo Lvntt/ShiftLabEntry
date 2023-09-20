@@ -15,9 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import org.koin.androidx.compose.koinViewModel
 import ru.lantt.shiftlabentry.R
+import ru.lantt.shiftlabentry.presentation.ui.navigation.ShiftLabEntryDestinations
 import ru.lantt.shiftlabentry.presentation.ui.screen.registration.components.DatePickerField
 import ru.lantt.shiftlabentry.presentation.ui.screen.registration.components.FormTextField
 import ru.lantt.shiftlabentry.presentation.ui.screen.registration.components.GreetingsSubtitleText
@@ -31,6 +32,7 @@ import ru.lantt.shiftlabentry.presentation.viewmodel.RegistrationViewModel
 
 @Composable
 fun RegistrationScreen(
+    navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: RegistrationViewModel = koinViewModel()
 ) {
@@ -101,14 +103,11 @@ fun RegistrationScreen(
         Spacer(modifier = Modifier.height(PaddingExtraLarge))
         
         RegisterButton(
-            onClick = { },
+            onClick = {
+                viewModel.onRegister()
+                navController.navigate(ShiftLabEntryDestinations.HOME)
+            },
             isEnabled = viewModel.registrationIsAllowed()
         )
     }
-}
-
-@Preview
-@Composable
-fun RegistrationScreenPreview() {
-    RegistrationScreen()
 }
