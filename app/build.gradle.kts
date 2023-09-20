@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.lantt.shiftlabentry"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    val securityCryptoVersion = "1.1.0-alpha06"
+
+    val securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -59,6 +62,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
+    implementation(securityCrypto)
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
