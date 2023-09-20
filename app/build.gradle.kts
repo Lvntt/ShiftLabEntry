@@ -51,8 +51,12 @@ android {
 
 dependencies {
     val securityCryptoVersion = "1.1.0-alpha06"
+    val koinVersion = "3.3.2"
+    val koinComposeVersion = "3.4.1"
 
     val securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
+    val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+    val koinAndroidCompose = "io.insert-koin:koin-androidx-compose:$koinComposeVersion"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -64,6 +68,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     implementation(securityCrypto)
+    implementation(koinAndroid)
+    implementation(koinAndroidCompose)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
