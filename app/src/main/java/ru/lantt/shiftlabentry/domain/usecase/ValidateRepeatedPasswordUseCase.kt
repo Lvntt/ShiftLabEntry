@@ -5,7 +5,14 @@ import ru.lantt.shiftlabentry.domain.entity.ValidationResult
 
 class ValidateRepeatedPasswordUseCase {
 
-    operator fun invoke(password: String, repeatedPassword: String): ValidationResult {
+    operator fun invoke(password: String?, repeatedPassword: String?): ValidationResult {
+        if (password == null || repeatedPassword == null) {
+            return ValidationResult(
+                isSuccessful = false,
+                errorType = ErrorType.EMPTY_FIELD
+            )
+        }
+
         if (password != repeatedPassword) {
             return ValidationResult(
                 isSuccessful = false,
