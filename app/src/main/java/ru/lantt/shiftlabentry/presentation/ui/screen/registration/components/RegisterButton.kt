@@ -1,4 +1,4 @@
-package ru.lantt.shiftlabentry.presentation.screen.registration.components
+package ru.lantt.shiftlabentry.presentation.ui.screen.registration.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -24,6 +24,7 @@ import ru.lantt.shiftlabentry.presentation.ui.theme.TextFieldIconSize
 @Composable
 fun RegisterButton(
     onClick: () -> Unit,
+    isEnabled: Boolean,
     modifier: Modifier = Modifier
 ) {
     Button(
@@ -35,7 +36,8 @@ fun RegisterButton(
         ),
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(min = ButtonMinHeight)
+            .heightIn(min = ButtonMinHeight),
+        enabled = isEnabled
     ) {
         Text(
             text = stringResource(id = R.string.register),

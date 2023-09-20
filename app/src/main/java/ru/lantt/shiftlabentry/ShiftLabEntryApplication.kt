@@ -5,6 +5,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import ru.lantt.shiftlabentry.di.provideDataModule
 import ru.lantt.shiftlabentry.di.provideDomainModule
+import ru.lantt.shiftlabentry.di.providePresentationModule
 
 class ShiftLabEntryApplication : Application() {
 
@@ -14,7 +15,8 @@ class ShiftLabEntryApplication : Application() {
             androidContext(this@ShiftLabEntryApplication)
             modules(
                 provideDataModule(),
-                provideDomainModule()
+                provideDomainModule(),
+                providePresentationModule()
             )
         }
     }

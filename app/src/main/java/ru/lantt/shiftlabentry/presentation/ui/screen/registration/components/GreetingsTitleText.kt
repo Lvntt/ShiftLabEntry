@@ -1,4 +1,4 @@
-package ru.lantt.shiftlabentry.presentation.screen.registration.components
+package ru.lantt.shiftlabentry.presentation.ui.screen.registration.components
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -10,7 +10,7 @@ import ru.lantt.shiftlabentry.presentation.ui.theme.Title
 @Composable
 fun GreetingsTitleText(modifier: Modifier = Modifier) {
     Text(
-        text = stringResource(id = R.string.greetings_title),
+        text = stringResource(id = R.string.greeting_title),
         style = Title,
         modifier = modifier
     )

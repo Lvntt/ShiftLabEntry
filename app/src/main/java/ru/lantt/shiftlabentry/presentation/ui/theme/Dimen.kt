@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.dp
 
 const val RoundedCornerShapePercentMedium = 15
 
+val PaddingExtraSmall = 4.dp
 val PaddingMedium = 16.dp
 val PaddingLarge = 32.dp
 val PaddingExtraLarge = 64.dp

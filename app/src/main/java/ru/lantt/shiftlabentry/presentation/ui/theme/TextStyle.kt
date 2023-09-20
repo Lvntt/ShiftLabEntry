@@ -33,3 +33,9 @@ val ButtonTextStyle = TextStyle(
     fontWeight = FontWeight.SemiBold,
     fontSize = 18.sp
 )
+
+val ErrorTextStyle = TextStyle(
+    fontFamily = Montserrat,
+    fontWeight = FontWeight.Normal,
+    fontSize = 10.sp
+)

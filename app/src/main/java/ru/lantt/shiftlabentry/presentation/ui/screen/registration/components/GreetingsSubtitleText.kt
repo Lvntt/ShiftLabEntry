@@ -1,4 +1,4 @@
-package ru.lantt.shiftlabentry.presentation.screen.registration.components
+package ru.lantt.shiftlabentry.presentation.ui.screen.registration.components
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
