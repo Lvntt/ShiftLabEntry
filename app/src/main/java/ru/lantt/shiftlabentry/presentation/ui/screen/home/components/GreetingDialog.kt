@@ -3,7 +3,9 @@ package ru.lantt.shiftlabentry.presentation.ui.screen.home.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,9 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import ru.lantt.shiftlabentry.R
 import ru.lantt.shiftlabentry.presentation.ui.theme.ButtonTextStyle
 import ru.lantt.shiftlabentry.presentation.ui.theme.ImageRegularSize
-import ru.lantt.shiftlabentry.presentation.ui.theme.Orange
+import ru.lantt.shiftlabentry.presentation.ui.theme.LightRed
 import ru.lantt.shiftlabentry.presentation.ui.theme.PaddingExtraSmall
 import ru.lantt.shiftlabentry.presentation.ui.theme.PaddingMedium
+import ru.lantt.shiftlabentry.presentation.ui.theme.PaddingSmall
 import ru.lantt.shiftlabentry.presentation.ui.theme.RoundedCornerShapePercentMedium
 import ru.lantt.shiftlabentry.presentation.ui.theme.SmallElevation
 import ru.lantt.shiftlabentry.presentation.ui.theme.Subtitle
@@ -65,7 +68,7 @@ private fun GreetingDialogUI(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.sun_image),
+                painter = painterResource(id = R.drawable.wavinghand_image),
                 contentScale = ContentScale.Fit,
                 contentDescription = null,
                 modifier = Modifier
@@ -82,11 +85,14 @@ private fun GreetingDialogUI(
                     maxLines = 2
                 )
             }
+
+            Spacer(modifier = Modifier.height(PaddingSmall))
+
             TextButton(
                 onClick = onDismiss,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Orange)
+                    .background(LightRed)
             ) {
                 Text(
                     text = stringResource(id = R.string.hiThere),

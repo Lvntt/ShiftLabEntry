@@ -15,6 +15,7 @@ import ru.lantt.shiftlabentry.domain.usecase.ValidateSecondNameUseCase
 import ru.lantt.shiftlabentry.presentation.mapper.ErrorTypeToStringRes
 import ru.lantt.shiftlabentry.presentation.uistate.RegistrationUiState
 import java.text.SimpleDateFormat
+import java.util.Locale
 
 class RegistrationViewModel(
     private val validateFirstNameUseCase: ValidateFirstNameUseCase,
@@ -108,7 +109,7 @@ class RegistrationViewModel(
     fun getFormattedDate(): String? {
         val dateOfBirth = _registrationUiState.value.dateOfBirth ?: return null
 
-        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return simpleDateFormat.format(dateOfBirth)
     }
 
@@ -131,8 +132,8 @@ class RegistrationViewModel(
 
         saveUserUseCase(
             User(
-                firstName = registrationState.firstName,
-                secondName = registrationState.secondName,
+                firstName = registrationState.firstName.replaceFirstChar { it.uppercaseChar() },
+                secondName = registrationState.secondName.replaceFirstChar { it.uppercaseChar() },
                 dateOfBirthMillis = registrationState.dateOfBirth ?: Constants.DATE_OF_BIRTH_ERROR_CODE,
                 password = registrationState.password
             )
