@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import ru.lantt.shiftlabentry.presentation.ui.navigation.Navigation
@@ -17,7 +18,8 @@ class MainActivity : ComponentActivity() {
                 val uiController = rememberSystemUiController()
                 val navController = rememberNavController()
 
-                uiController.setSystemBarsColor(MaterialTheme.colorScheme.background)
+                uiController.setStatusBarColor(Color.Black)
+                uiController.setNavigationBarColor(MaterialTheme.colorScheme.background)
 
                 Navigation(navController = navController)
             }
