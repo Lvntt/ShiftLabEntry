@@ -13,7 +13,7 @@ import ru.lantt.shiftlabentry.domain.usecase.ValidatePasswordUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidateRepeatedPasswordUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidateSecondNameUseCase
 import ru.lantt.shiftlabentry.presentation.mapper.ErrorTypeToStringRes
-import ru.lantt.shiftlabentry.presentation.uistate.RegistrationUiState
+import ru.lantt.shiftlabentry.presentation.uistate.RegistrationState
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -26,9 +26,9 @@ class RegistrationViewModel(
     private val saveUserUseCase: SaveUserUseCase
 ) : ViewModel() {
 
-    val registrationUiState: State<RegistrationUiState>
-        get() = _registrationUiState
-    private val _registrationUiState = mutableStateOf(RegistrationUiState())
+    val registrationState: State<RegistrationState>
+        get() = _registrationState
+    private val _registrationState = mutableStateOf(RegistrationState())
 
     private fun getErrorDescription(errorType: ErrorType?): Int? {
         if (errorType == null) {
@@ -37,84 +37,74 @@ class RegistrationViewModel(
         return ErrorTypeToStringRes.errors[errorType]
     }
 
-    private fun validateFirstName(): Boolean {
-        val validationResult = validateFirstNameUseCase(_registrationUiState.value.firstName)
+    private fun validateFirstName() {
+        val validationResult = validateFirstNameUseCase(_registrationState.value.firstName)
         val errorDescription = getErrorDescription(validationResult.errorType)
-        _registrationUiState.value = _registrationUiState.value.copy(firstNameErrorId = errorDescription)
-
-        return validationResult.isSuccessful
+        _registrationState.value = _registrationState.value.copy(firstNameErrorId = errorDescription)
     }
 
-    private fun validateSecondName(): Boolean {
-        val validationResult = validateSecondNameUseCase(_registrationUiState.value.secondName)
+    private fun validateSecondName() {
+        val validationResult = validateSecondNameUseCase(_registrationState.value.secondName)
         val errorDescription = getErrorDescription(validationResult.errorType)
-        _registrationUiState.value = _registrationUiState.value.copy(secondNameErrorId = errorDescription)
-
-        return validationResult.isSuccessful
+        _registrationState.value = _registrationState.value.copy(secondNameErrorId = errorDescription)
     }
 
-    private fun validatePassword(): Boolean {
-        val validationResult = validatePasswordUseCase(_registrationUiState.value.password)
+    private fun validatePassword() {
+        val validationResult = validatePasswordUseCase(_registrationState.value.password)
         val errorDescription = getErrorDescription(validationResult.errorType)
-        _registrationUiState.value = _registrationUiState.value.copy(passwordErrorId = errorDescription)
-
-        return validationResult.isSuccessful
+        _registrationState.value = _registrationState.value.copy(passwordErrorId = errorDescription)
     }
 
-    private fun validateRepeatedPassword(): Boolean {
+    private fun validateRepeatedPassword() {
         val validationResult = validateRepeatedPasswordUseCase(
-            _registrationUiState.value.password,
-            _registrationUiState.value.repeatedPassword
+            _registrationState.value.password,
+            _registrationState.value.repeatedPassword
         )
         val errorDescription = getErrorDescription(validationResult.errorType)
-        _registrationUiState.value = _registrationUiState.value.copy(repeatedPasswordErrorId = errorDescription)
-
-        return validationResult.isSuccessful
+        _registrationState.value = _registrationState.value.copy(repeatedPasswordErrorId = errorDescription)
     }
 
-    private fun validateDateOfBirth(): Boolean {
-        val validationResult = validateDateOfBirthUseCase(_registrationUiState.value.dateOfBirth)
+    private fun validateDateOfBirth() {
+        val validationResult = validateDateOfBirthUseCase(_registrationState.value.dateOfBirth)
         val errorDescription = getErrorDescription(validationResult.errorType)
-        _registrationUiState.value = _registrationUiState.value.copy(dateOfBirthErrorId = errorDescription)
-
-        return validationResult.isSuccessful
+        _registrationState.value = _registrationState.value.copy(dateOfBirthErrorId = errorDescription)
     }
 
     fun setFirstName(firstName: String) {
-        _registrationUiState.value = _registrationUiState.value.copy(firstName = firstName)
+        _registrationState.value = _registrationState.value.copy(firstName = firstName)
         validateFirstName()
     }
 
     fun setSecondName(secondName: String) {
-        _registrationUiState.value = _registrationUiState.value.copy(secondName = secondName)
+        _registrationState.value = _registrationState.value.copy(secondName = secondName)
         validateSecondName()
     }
 
     fun setDateOfBirth(dateOfBirthMillis: Long) {
-        _registrationUiState.value = _registrationUiState.value.copy(dateOfBirth = dateOfBirthMillis)
+        _registrationState.value = _registrationState.value.copy(dateOfBirth = dateOfBirthMillis)
         validateDateOfBirth()
     }
 
     fun setPassword(password: String) {
-        _registrationUiState.value = _registrationUiState.value.copy(password = password)
+        _registrationState.value = _registrationState.value.copy(password = password)
         validatePassword()
         validateRepeatedPassword()
     }
 
     fun setRepeatedPassword(repeatedPassword: String) {
-        _registrationUiState.value = _registrationUiState.value.copy(repeatedPassword = repeatedPassword)
+        _registrationState.value = _registrationState.value.copy(repeatedPassword = repeatedPassword)
         validateRepeatedPassword()
     }
 
     fun getFormattedDate(): String? {
-        val dateOfBirth = _registrationUiState.value.dateOfBirth ?: return null
+        val dateOfBirth = _registrationState.value.dateOfBirth ?: return null
 
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return simpleDateFormat.format(dateOfBirth)
     }
 
     fun registrationIsAllowed(): Boolean {
-        val registrationState = _registrationUiState.value
+        val registrationState = _registrationState.value
         return registrationState.firstName.isNotEmpty()
                 && registrationState.secondName.isNotEmpty()
                 && registrationState.dateOfBirth != null
@@ -128,7 +118,7 @@ class RegistrationViewModel(
     }
 
     fun onRegister() {
-        val registrationState = _registrationUiState.value
+        val registrationState = _registrationState.value
 
         saveUserUseCase(
             User(

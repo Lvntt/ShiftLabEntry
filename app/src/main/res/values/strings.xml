@@ -23,4 +23,5 @@
     <string name="greeting">Hey,</string>
     <string name="hiThere">Hi there!</string>
     <string name="noUser">There is no user yet :(</string>
+    <string name="forCft">For CFT</string>
 </resources>

@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import ru.lantt.shiftlabentry.data.datasource.UserDataSource
 import ru.lantt.shiftlabentry.data.repository.UserRepositoryImpl
 import ru.lantt.shiftlabentry.domain.repository.UserRepository
+import ru.lantt.shiftlabentry.domain.usecase.CheckUserExistenceUseCase
 import ru.lantt.shiftlabentry.domain.usecase.GetUserUseCase
 import ru.lantt.shiftlabentry.domain.usecase.SaveUserUseCase
 import ru.lantt.shiftlabentry.domain.usecase.ValidateDateOfBirthUseCase
@@ -49,6 +50,10 @@ fun provideDomainModule(): Module = module {
 
     factory {
         ValidateRepeatedPasswordUseCase()
+    }
+
+    factory {
+        CheckUserExistenceUseCase(get())
     }
 
 }

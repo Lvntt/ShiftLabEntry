@@ -16,7 +16,7 @@ fun providePresentationModule(): Module = module {
 
     viewModel {
         HomeViewModel(
-            get()
+            get(), get()
         )
     }
 

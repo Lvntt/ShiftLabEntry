@@ -2,7 +2,7 @@ package ru.lantt.shiftlabentry.presentation.uistate
 
 import ru.lantt.shiftlabentry.common.Constants
 
-data class RegistrationUiState(
+data class RegistrationState(
     val firstName: String = Constants.EMPTY_STRING,
     val firstNameErrorId: Int? = null,
     val secondName: String = Constants.EMPTY_STRING,

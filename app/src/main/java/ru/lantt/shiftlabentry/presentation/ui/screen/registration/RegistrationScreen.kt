@@ -36,7 +36,7 @@ fun RegistrationScreen(
     modifier: Modifier = Modifier,
     viewModel: RegistrationViewModel = koinViewModel()
 ) {
-    val registrationState by remember { viewModel.registrationUiState }
+    val registrationState by remember { viewModel.registrationState }
 
     Column(
         modifier = modifier
@@ -105,7 +105,11 @@ fun RegistrationScreen(
         RegisterButton(
             onClick = {
                 viewModel.onRegister()
-                navController.navigate(ShiftLabEntryDestinations.HOME)
+                navController.navigate(ShiftLabEntryDestinations.HOME) {
+                    popUpTo(navController.graph.id) {
+                        inclusive = true
+                    }
+                }
             },
             isEnabled = viewModel.registrationIsAllowed()
         )

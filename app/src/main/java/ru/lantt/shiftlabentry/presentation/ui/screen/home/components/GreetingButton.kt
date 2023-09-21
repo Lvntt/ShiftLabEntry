@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import org.koin.androidx.compose.koinViewModel
 import ru.lantt.shiftlabentry.R
 import ru.lantt.shiftlabentry.presentation.ui.theme.ButtonContainerColor
 import ru.lantt.shiftlabentry.presentation.ui.theme.ButtonContentColor
@@ -26,7 +25,7 @@ import ru.lantt.shiftlabentry.presentation.viewmodel.HomeViewModel
 
 @Composable
 fun GreetingButton(
-    viewModel: HomeViewModel = koinViewModel(),
+    viewModel: HomeViewModel,
     modifier: Modifier = Modifier
 ) {
     var greetingDialogOpened by remember { mutableStateOf(false) }

@@ -18,13 +18,13 @@ fun Navigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = ShiftLabEntryDestinations.REGISTRATION
+        startDestination = ShiftLabEntryDestinations.HOME
     ) {
         composable(ShiftLabEntryDestinations.REGISTRATION) {
             RegistrationScreen(navController = navController)
         }
         composable(ShiftLabEntryDestinations.HOME) {
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
     }
 }
