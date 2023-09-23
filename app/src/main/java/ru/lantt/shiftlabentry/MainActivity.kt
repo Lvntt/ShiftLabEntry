@@ -3,44 +3,26 @@ package ru.lantt.shiftlabentry
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import ru.lantt.shiftlabentry.ui.theme.ShiftLabEntryTheme
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import ru.lantt.shiftlabentry.presentation.ui.navigation.Navigation
+import ru.lantt.shiftlabentry.presentation.ui.theme.ShiftLabEntryTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ShiftLabEntryTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                val uiController = rememberSystemUiController()
+                val navController = rememberNavController()
+
+                uiController.setStatusBarColor(Color.Black)
+                uiController.setNavigationBarColor(MaterialTheme.colorScheme.background)
+
+                Navigation(navController = navController)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ShiftLabEntryTheme {
-        Greeting("Android")
     }
 }

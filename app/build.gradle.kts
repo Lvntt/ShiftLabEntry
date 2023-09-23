@@ -9,10 +9,11 @@ android {
 
     defaultConfig {
         applicationId = "ru.lantt.shiftlabentry"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -50,7 +51,19 @@ android {
 }
 
 dependencies {
+    val securityCryptoVersion = "1.1.0-alpha06"
+    val koinVersion = "3.3.2"
+    val koinComposeVersion = "3.4.1"
+    val navVersion = "2.5.3"
+    val accompanistVersion = "0.28.0"
 
+    val securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
+    val koinAndroid = "io.insert-koin:koin-android:$koinVersion"
+    val koinAndroidCompose = "io.insert-koin:koin-androidx-compose:$koinComposeVersion"
+    val navigation = "androidx.navigation:navigation-compose:$navVersion"
+    val accompanist = "com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion"
+
+    implementation("androidx.compose.material3:material3:1.1.1")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")
@@ -59,6 +72,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+
+    implementation(securityCrypto)
+    implementation(koinAndroid)
+    implementation(koinAndroidCompose)
+    implementation(navigation)
+    implementation(accompanist)
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
