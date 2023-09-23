@@ -33,7 +33,8 @@ ShiftLabEntry — это проект, сделанный в рамках тес
 # Project screenshots
 
 <p>
-    <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/8e494f01-b841-4bab-9bde-bfbdfc9f8138" width="250" height="540">
+    <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/8e494f01-b841-4bab-9bde-bfbdfc9f8138" width="250" height="540">    
+    <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/0e5eb56e-80ce-459c-b316-bb57201411ce" width="250" height="540">    
     <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/06a656ca-cc2e-45d6-83d2-fe34de80a4f9" width="250" height="540">
     <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/b677b772-8b3a-4c0c-b199-8e679de4278e" width="250" height="540">
     <img src="https://github.com/Lvntt/ShiftLabEntry/assets/53006125/2944dbc8-18b5-4327-b480-a959c526473e" width="250" height="540">
